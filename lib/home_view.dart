@@ -128,8 +128,10 @@ class _HomeViewState extends State<HomeView> {
           return Row(
             children: [
               SizedBox(width: 400, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
-              Container(
-                color: Colors.red,
+              Expanded(
+                child: Container(
+                  width: 200,
+                ),
               )
             ],
           );

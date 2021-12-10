@@ -123,21 +123,14 @@ class _HomeViewState extends State<HomeView> {
         child: const Icon(Icons.add),
         backgroundColor: const Color.fromRGBO(37, 43, 103, 1),
       ),
-      body: ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemBuilder: (context, index) {
-            return TaskCardWidget(
-              dateTime: selectedItem == 'todo' ? _unCompletedData[index]['date_time'] : _CompletedData[index]['date_time'],
-              title: selectedItem == 'todo' ? _unCompletedData[index]['title'] : _CompletedData[index]['title'],
-              description: selectedItem == 'todo' ? _unCompletedData[index]['description'] : _CompletedData[index]['description'],
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(
-              height: 5,
-            );
-          },
-          itemCount: selectedItem == 'todo' ? _unCompletedData.length : _CompletedData.length),
+      body: LayoutBuilder(
+        builder: (context,constraints) {
+          if (constraints.maxWidth> 600){
+            return Container();
+          }  return TodoListViewWidget( selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData:_CompletedData),
+          
+        }
+      ),
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -204,6 +197,37 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
+}
+class TodoListViewWidget extends StatelessWidget{
+  const TodoListViewWidget ({
+    Key? key,
+    required this.selectedItem,
+    required List<Map<String, dynamic>> unCompletedData,
+    required List<Map<String, dynamic>> completedData,
+  }) : _unCompletedData= unCompletedData,_CompletedData= completedData,super(key: key);
+   final String selectedItem;
+   final List<Map<String, dynamic>> _unCompletedData;
+   final List<Map<String, dynamic>> _CompletedData;
+
+   @override
+   Widget build(BuildContext context){
+     return  ListView.separated(
+              padding: const EdgeInsets.all(16),
+              itemBuilder: (context, index) {
+                return TaskCardWidget(
+                  dateTime: selectedItem == 'todo' ? _unCompletedData[index]['date_time'] : _CompletedData[index]['date_time'],
+                  title: selectedItem == 'todo' ? _unCompletedData[index]['title'] : _CompletedData[index]['title'],
+                  description: selectedItem == 'todo' ? _unCompletedData[index]['description'] : _CompletedData[index]['description'],
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 5,
+                );
+              },
+              itemCount: selectedItem == 'todo' ? _unCompletedData.length : _CompletedData.length
+              );
+   };
 }
 
 class TaskCardWidget extends StatelessWidget {

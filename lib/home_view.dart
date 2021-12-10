@@ -128,7 +128,7 @@ class _HomeViewState extends State<HomeView> {
           if (constraints.maxWidth > 600) {
             return Row(
               children: [
-                SizedBox(width: 400, height: MediaQuery.of(context).size.height, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
+                SizedBox(width: contraints.maxWidth / 2, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
                 Container(
                   color: Colors.red,
                 ),
@@ -221,8 +221,7 @@ class TodoListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
           return TaskCardWidget(

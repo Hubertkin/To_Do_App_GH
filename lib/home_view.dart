@@ -227,7 +227,7 @@ class TodoListViewWidget extends StatelessWidget{
               },
               itemCount: selectedItem == 'todo' ? _unCompletedData.length : _CompletedData.length
               );
-   };
+   },
 }
 
 class TaskCardWidget extends StatelessWidget {

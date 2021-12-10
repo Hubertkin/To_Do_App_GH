@@ -124,11 +124,11 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: const Color.fromRGBO(37, 43, 103, 1),
       ),
       body: LayoutBuilder(
-        builder: (context, constraints) {
+        builder: (context, constraints) async {
           if (constraints.maxWidth > 600) {
             return Row(
               children: [
-                SizedBox(width: contraints.maxWidth / 2, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
+                SizedBox(width: constraints.maxWidth / 2, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
                 Container(
                   color: Colors.red,
                 ),

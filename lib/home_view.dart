@@ -128,12 +128,10 @@ class _HomeViewState extends State<HomeView> {
           if (constraints.maxWidth > 600) {
             return Row(
               children: [
-                SizedBox(width: 400, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
-                Expanded(
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                )
+                SizedBox(width: 400, height: MediaQuery.of(context).size.height, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
+                Container(
+                  color: Colors.red,
+                ),
               ],
             );
           }

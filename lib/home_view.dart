@@ -123,20 +123,22 @@ class _HomeViewState extends State<HomeView> {
         child: const Icon(Icons.add),
         backgroundColor: const Color.fromRGBO(37, 43, 103, 1),
       ),
-      body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth > 600) {
-          return Row(
-            children: [
-              SizedBox(width: 400, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
-              Expanded(
-                child: Container(
-                  width: 200,
-                ),
-              )
-            ],
-          );
-        }
-      }),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return Row(
+              children: [
+                SizedBox(width: 400, child: TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData)),
+                Expanded(
+                  child: Container(
+                    color: Colors.red,
+                  ),
+                )
+              ],
+            );
+          }
+        },
+      ),
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(

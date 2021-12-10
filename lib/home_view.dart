@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import 'package:layout/layout.dart';
+
 import 'utils.dart';
 
 import 'create_todo_view.dart';
@@ -124,7 +126,7 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: const Color.fromRGBO(37, 43, 103, 1),
       ),
       body: LayoutBuilder(
-        builder: (context, constraints) async {
+        builder: (context, constraints) {
           if (constraints.maxWidth > 600) {
             return Row(
               children: [

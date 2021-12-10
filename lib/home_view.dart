@@ -125,9 +125,16 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth > 600) {
-          return Container();
+          return Row(
+            children: [
+              TodoListViewWidget(selectedItem: selectedItem,
+         unCompletedData: _unCompletedData,
+          completedData: _CompletedData);
+
+            ],
+          );
         }
-        return TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData);
+        
       }),
       bottomNavigationBar: SafeArea(
         child: Padding(

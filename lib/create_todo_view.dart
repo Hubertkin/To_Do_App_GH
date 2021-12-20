@@ -27,7 +27,7 @@ class CreateTodoView extends StatelessWidget {
         ),
       ),
       body: Form(
-        autovalidateMode: AutovalidateMode.always,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         key: _formKey,
         child: ListView(padding: const EdgeInsets.all(16), children: [
           TextFormField(

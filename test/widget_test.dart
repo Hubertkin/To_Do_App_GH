@@ -14,7 +14,7 @@ import 'package:todoapp/controllers/todo_controller.dart';
 void main() {
   final TodoController _todoController = TodoController();
 
-  group('should return 200', () {
+  test('should return 200', () {
     _todoController.getAllTodos();
   });
 }

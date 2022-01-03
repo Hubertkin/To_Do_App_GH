@@ -25,39 +25,6 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Todo> _CompletedData = [];
 
-  final List<Map<String, dynamic>> data = [
-    {
-      'title': 'Curabitur euismod leo in rutrum scelerisque .',
-      'description': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at imperdiet ante, eget feugiat magna. Curabitur euismod leo in rutrum scelerisque. Vivamus fermentum mi vitae pulvinar ultricies. Duis congue finibus dui, quis tristique magna dignissim vitae. Aenean at quam mauris. Etiam vulputate, magna sit amet ornare consequat, lectus nisi tincidunt elit, vel mattis dolor metus nec ante. Fusce dignissim dui ac massa lobortis, nec tempus arcu porttitor. Nulla congue eros sed sapien malesuada, at varius lectus dignissim. Donec at magna sed sem euismod porta. Cras et nunc eget sem rutrum ultricies eu vitae augue. Maecenas eros augue, volutpat id elit sit amet, sollicitudin bibendum sem",
-      'date_time': 'Yesterday',
-      'status': true
-    },
-    {
-      'title': 'Fusce at imperdiet ante, eget feugiat magna.',
-      'description': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at imperdiet ante, eget feugiat magna. Curabitur euismod leo in rutrum scelerisque. Vivamus fermentum mi vitae pulvinar ultricies. Duis congue finibus dui, quis tristique magna dignissim vitae. Aenean at quam mauris. Etiam vulputate, magna sit amet ornare consequat, lectus nisi tincidunt elit, vel mattis dolor metus nec ante. Fusce dignissim dui ac massa lobortis, nec tempus arcu porttitor. Nulla congue eros sed sapien malesuada, at varius lectus dignissim. Donec at magna sed sem euismod porta. Cras et nunc eget sem rutrum ultricies eu vitae augue. Maecenas eros augue, volutpat id elit sit amet, sollicitudin bibendum sem",
-      'date_time': 'Today',
-      'status': false
-    },
-    {
-      'title': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'description': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at imperdiet ante, eget feugiat magna. Curabitur euismod leo in rutrum scelerisque. Vivamus fermentum mi vitae pulvinar ultricies. Duis congue finibus dui, quis tristique magna dignissim vitae. Aenean at quam mauris. Etiam vulputate, magna sit amet ornare consequat, lectus nisi tincidunt elit, vel mattis dolor metus nec ante. Fusce dignissim dui ac massa lobortis, nec tempus arcu porttitor. Nulla congue eros sed sapien malesuada, at varius lectus dignissim. Donec at magna sed sem euismod porta. Cras et nunc eget sem rutrum ultricies eu vitae augue. Maecenas eros augue, volutpat id elit sit amet, sollicitudin bibendum sem",
-      'date_time': 'Tomorrow',
-      'status': false
-    },
-    {
-      'title': 'Donec rutrum risus lobortis massa condimentum.',
-      'description': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at imperdiet ante, eget feugiat magna. Curabitur euismod leo in rutrum scelerisque. Vivamus fermentum mi vitae pulvinar ultricies. Duis congue finibus dui, quis tristique magna dignissim vitae. Aenean at quam mauris. Etiam vulputate, magna sit amet ornare consequat, lectus nisi tincidunt elit, vel mattis dolor metus nec ante. Fusce dignissim dui ac massa lobortis, nec tempus arcu porttitor. Nulla congue eros sed sapien malesuada, at varius lectus dignissim. Donec at magna sed sem euismod porta. Cras et nunc eget sem rutrum ultricies eu vitae augue. Maecenas eros augue, volutpat id elit sit amet, sollicitudin bibendum sem",
-      'date_time': 'Mon. 15 Dec .21',
-      'status': false
-    },
-    {
-      'title': 'Aenean consequat vel tellus nec rutrum.',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at imperdiet ante, eget feugiat magna. Curabitur euismod leo in rutrum scelerisque. Vivamus fermentum mi vitae pulvinar ultricies. Duis congue finibus dui, quis tristique magna dignissim vitae. Aenean at quam mauris. Etiam vulputate, magna sit amet ornare consequat, lectus nisi tincidunt elit, vel mattis dolor metus nec ante. Fusce dignissim dui ac massa lobortis, nec tempus arcu porttitor. Nulla congue eros sed sapien malesuada, at varius lectus dignissim. Donec at magna sed sem euismod porta. Cras et nunc eget sem rutrum ultricies eu vitae augue. Maecenas eros augue, volutpat id elit sit amet, sollicitudin bibendum sem',
-      'date_time': 'Today',
-      'status': true
-    },
-  ];
-
   @override
   void initState() {
     _todoController.getAllTodos().then((todos) {
@@ -233,7 +200,7 @@ class TodoListViewWidget extends StatelessWidget {
           return TaskCardWidget(
             dateTime: selectedItem == 'todo' ? _unCompletedData[index].deadline : _CompletedData[index].deadline,
             title: selectedItem == 'todo' ? _unCompletedData[index].title : _CompletedData[index].title,
-            description: selectedItem == 'todo' ? _unCompletedData[index].description : _CompletedData.description,
+            description: selectedItem == 'todo' ? _unCompletedData[index].description : _CompletedData[index].description,
           );
         },
         separatorBuilder: (context, index) {

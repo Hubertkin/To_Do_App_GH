@@ -5,11 +5,7 @@ class TodoService {
 
   //get all todos
   Future<Response> getAllTodosRequest() async {
-    return await get(Uri.parse('$baseUrl/todos'), headers: {
-      "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-      "Access-Control-Allow-Headers": "Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale",
-      "Access-Control-Allow-Methods": "GET, HEAD"
-    });
+    return await get(Uri.parse('$baseUrl/todos'), headers:);
   }
 
   //create a todo

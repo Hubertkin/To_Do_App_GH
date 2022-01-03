@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 
 class TodoService {
-  final String baseUrl = 'https://tan-misty-elephant.cyclic.app/';
+  final String baseUrl = 'https://tan-misty-elephant.cyclic.app';
 
   //get all todos
   Future<Response> getAllTodosRequest() async {

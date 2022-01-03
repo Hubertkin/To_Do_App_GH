@@ -27,8 +27,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    _todoController.getAllTodos().then((todos) {
-      for (Todo element in todos) {
+    _todoController.getAllTodos().then((todos {
+      for (Todo element in todos.key) {
         if (!element.isCompleted) {
           _unCompletedData.add(element);
         } else {

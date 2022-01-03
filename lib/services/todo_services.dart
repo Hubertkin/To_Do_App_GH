@@ -5,10 +5,13 @@ class TodoService {
 
   //get all todos
   Future<Response> getAllTodosRequest() async {
-    final response = await get(Uri.parse('$baseUrl/todos'), headers: {
-      "Accept": "application/json",
-      "Access-Control-Allow-Origin": "*"
-    });
+    final response = await get(
+      Uri.parse('$baseUrl/todos'),
+      headers: {
+        "Accept": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    );
     return response;
   }
 

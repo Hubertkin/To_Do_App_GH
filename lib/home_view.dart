@@ -35,6 +35,9 @@ class _HomeViewState extends State<HomeView> {
           _CompletedData.add(element);
         }
       }
+      setState((){
+        
+      })
     });
     super.initState();
   }

@@ -5,7 +5,7 @@ class TodoService {
 
   //get all todos
   Future<Response> getAllTodosRequest() async {
-    return await get(Uri.parse('$baseUrl/todos'), heade);
+    return await get(Uri.parse('$baseUrl/todos'));
   }
 
   //create a todo

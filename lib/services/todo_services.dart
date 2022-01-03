@@ -7,7 +7,7 @@ class TodoService {
   Future<Response> getAllTodosRequest() async {
     final response = await get(Uri.parse('$baseUrl/todos'), headers: {
       "Accept": "application/json",
-      "Access-Control_Allow_Origin": "*"
+      "Access-Control-Allow-Origin": "*"
     });
     return response;
   }

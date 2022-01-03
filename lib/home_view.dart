@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import 'controllers/todo_controller.dart';
+import 'models/todo.dart';
 import 'utils.dart';
 
 import 'create_todo_view.dart';
@@ -16,11 +18,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final TodoController _todoController = TodoController();
   String selectedItem = 'todo';
 
-  final List<Map<String, dynamic>> _unCompletedData = [];
+  final List<Todo> _unCompletedData = [];
 
-  final List<Map<String, dynamic>> _CompletedData = [];
+  final List<Todo> _CompletedData = [];
 
   final List<Map<String, dynamic>> data = [
     {
@@ -57,13 +60,15 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    for (Map<String, dynamic> element in data) {
-      if (!element['status']) {
-        _unCompletedData.add(element);
-      } else {
-        _CompletedData.add(element);
+    _todoController.getAllTodos().then((todos) {
+      for (Todo element in todos) {
+        if (!element.isCompleted) {
+          _unCompletedData.add(element);
+        } else {
+          _CompletedData.add(element);
+        }
       }
-    }
+    });
     super.initState();
   }
 
@@ -153,9 +158,9 @@ class _HomeViewState extends State<HomeView> {
                       padding: const EdgeInsets.all(16),
                       itemBuilder: (context, index) {
                         return TaskCardWidget(
-                          dateTime: _CompletedData[index]['date_time'],
-                          description: _CompletedData[index]['description'],
-                          title: _CompletedData[index]['title'],
+                          dateTime: _CompletedData[index].deadline,
+                          description: _CompletedData[index].description,
+                          title: _CompletedData[index].title,
                         );
                       },
                       separatorBuilder: (context, index) {
@@ -210,14 +215,14 @@ class TodoListViewWidget extends StatelessWidget {
   const TodoListViewWidget({
     Key? key,
     required this.selectedItem,
-    required List<Map<String, dynamic>> unCompletedData,
-    required List<Map<String, dynamic>> completedData,
+    required List<Todo> unCompletedData,
+    required List<Todo> completedData,
   })   : _unCompletedData = unCompletedData,
         _CompletedData = completedData,
         super(key: key);
   final String selectedItem;
-  final List<Map<String, dynamic>> _unCompletedData;
-  final List<Map<String, dynamic>> _CompletedData;
+  final List<Todo> _unCompletedData;
+  final List<Todo> _CompletedData;
 
   @override
   Widget build(BuildContext context) {
@@ -226,9 +231,9 @@ class TodoListViewWidget extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
           return TaskCardWidget(
-            dateTime: selectedItem == 'todo' ? _unCompletedData[index]['date_time'] : _CompletedData[index]['date_time'],
-            title: selectedItem == 'todo' ? _unCompletedData[index]['title'] : _CompletedData[index]['title'],
-            description: selectedItem == 'todo' ? _unCompletedData[index]['description'] : _CompletedData[index]['description'],
+            dateTime: selectedItem == 'todo' ? _unCompletedData[index].deadline : _CompletedData[index].deadline,
+            title: selectedItem == 'todo' ? _unCompletedData[index].title : _CompletedData[index].title,
+            description: selectedItem == 'todo' ? _unCompletedData[index].description : _CompletedData.description,
           );
         },
         separatorBuilder: (context, index) {
@@ -249,7 +254,7 @@ class TaskCardWidget extends StatelessWidget {
   }) : super(key: key);
   final String title;
   final String description;
-  final String dateTime;
+  final DateTime dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -264,7 +269,7 @@ class TaskCardWidget extends StatelessWidget {
             Icon(
               Icons.check_circle_outlined,
               size: 30,
-              color: customColor(date: dateTime),
+              color: customColor(date: deadline(date: dateTime)),
             ),
             const SizedBox(
               width: 10,
@@ -303,14 +308,14 @@ class TaskCardWidget extends StatelessWidget {
                 Icon(
                   Icons.notifications_outlined,
                   color: customColor(
-                    date: dateTime,
+                    date: deadline(date: dateTime),
                   ),
                 ),
                 Text(
-                  dateTime,
+                  deadline(date: dateTime),
                   style: TextStyle(
                     color: customColor(
-                      date: dateTime,
+                      date: deadline(date: dateTime),
                     ),
                   ),
                 ),

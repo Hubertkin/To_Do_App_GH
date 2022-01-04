@@ -190,6 +190,7 @@ class CreateTodoView extends StatelessWidget {
                   print(_titleController.text);
                   print(_descriptionController.text);
                   print(_dateController.text + ' ' + _timeController.text);
+                  print(myDate);
                   //bool isSent = await _todoController.createTodo(title:_titleController.text ,description: _descriptionController.text, deadline: )
 
                 } else {

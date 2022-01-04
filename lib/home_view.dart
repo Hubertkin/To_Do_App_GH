@@ -122,6 +122,18 @@ class _HomeViewState extends State<HomeView> {
               showBarModalBottomSheet(
                   context: context,
                   builder: (context) {
+                    if (_CompletedData.isEmpty) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.info,
+                            size: 50,
+                          ),
+                          Text('You don\'t have any completed Task!'),
+                        ],
+                      );
+                    }
                     return ListView.separated(
                       padding: const EdgeInsets.all(16),
                       itemBuilder: (context, index) {

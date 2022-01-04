@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'controllers/todo_controller.dart';
+
 class CreateTodoView extends StatelessWidget {
   CreateTodoView({Key? key}) : super(key: key);
+  final TodoController _todoController = TodoController();
 
   final TextEditingController _titleController = TextEditingController();
 
@@ -14,6 +17,7 @@ class CreateTodoView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   @override
+  DateTime? myDate;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -100,6 +104,7 @@ class CreateTodoView extends StatelessWidget {
                       final DateFormat _dateFormat = DateFormat('dd/MM/yyyy');
 
                       _dateController.text = _dateFormat.format(selectedDate!);
+                      myDate = selectedDate;
                     });
                   },
                   controller: _dateController,
@@ -137,6 +142,12 @@ class CreateTodoView extends StatelessWidget {
                   onTap: () {
                     showTimePicker(context: context, initialTime: TimeOfDay.now()).then((selectedTime) {
                       _timeController.text = selectedTime!.format(context);
+                      myDate!.add(
+                        Duration(
+                          hours: selectedTime.hour,
+                          minutes: selectedTime.minute,
+                        ),
+                      );
                     });
                   },
                   decoration: const InputDecoration(
@@ -179,6 +190,8 @@ class CreateTodoView extends StatelessWidget {
                   print(_titleController.text);
                   print(_descriptionController.text);
                   print(_dateController.text + ' ' + _timeController.text);
+                  //bool isSent = await _todoController.createTodo(title:_titleController.text ,description: _descriptionController.text, deadline: )
+
                 } else {
                   //validation failed!
                   print('failed!');

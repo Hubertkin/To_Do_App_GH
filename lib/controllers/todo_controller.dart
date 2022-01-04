@@ -23,12 +23,31 @@ class TodoController {
 
     return todo;
   }
-  Future<bool>createTodo({
+
+  Future<bool> createTodo({
     required String title,
     required String description,
     required DateTime deadline,
-  })async{
+  }) async {
     bool isSubmitted = false;
-    await _todoService.createTodo(title:title,description:description,deadline:deadline,)
+    await _todoService
+        .createTodo(
+      title: title,
+      description: description,
+      deadline: deadline,
+    )
+        .then((response) {
+      int statusCode = response.statusCode;
+      if (statusCode == 200) {
+        //success
+        isSubmitted = true;
+      } else {
+        //error
+        isSubmitted = false;
+      }
+    }).catchError((onError) {
+      isSubmitted = false;
+    });
+    return isSubmitted;
   }
 }

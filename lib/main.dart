@@ -7,7 +7,7 @@ void main() //entry point of ur code, where the app starts from
 {
   runApp(
     DevicePreview(
-      enabled: DebugMode,
+      enabled: kDebugMode,
       builder: (context) => MyApp(),
     ),
   );

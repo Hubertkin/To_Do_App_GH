@@ -17,9 +17,9 @@ Color customColor({String? date}) {
 String deadline({DateTime? date}) {
   if (date!.isAtSameMomentAs(DateTime.now())) {
     return 'Today';
-  } else if (date.isBefore(DateTime.now())) {
-    return 'Yesterday';
   } else if (date.isAfter(DateTime.now())) {
+    return 'Yesterday';
+  } else if (date.isBefore(DateTime.now())) {
     return 'Tomorrow';
   } else {
     return DateFormat().format(date);

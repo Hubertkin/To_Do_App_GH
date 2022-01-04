@@ -196,7 +196,7 @@ class CreateTodoView extends StatelessWidget {
                   if (isSent) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        backgroundColor: Color.fromRGBO(37, 43, 103, 1),
+                        backgroundColor: Colors.green,
                         content: Text('Todo added successfully!'),
                       ),
                     );
@@ -204,7 +204,7 @@ class CreateTodoView extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         backgroundColor: Colors.red,
-                        content: Text('Failed to add a new todo'),
+                        content: Text('Could not  add todo'),
                       ),
                     );
                   }

@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'home_view.dart';
 
 void main() //entry point of ur code, where the app starts from
-    =>
-    runApp(MyApp()); //a unique function that creates the root of the flutter tree and it is taking a widget called my App
+{
+  runApp(
+    DevicePreview(
+      const MyApp(),
+    ),
+  );
+} //a unique function that creates the root of the flutter tree and it is taking a widget called my App
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

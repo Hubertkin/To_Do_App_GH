@@ -28,11 +28,12 @@ dependencies:
   layout: ^1.0.2
   http: ^0.13.4
   
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  device_preview: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

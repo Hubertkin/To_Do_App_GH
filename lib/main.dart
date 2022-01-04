@@ -7,7 +7,6 @@ void main() //entry point of ur code, where the app starts from
 {
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
       builder: (context) => MyApp(),
     ),
   );
@@ -18,6 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       // Application name . this overrides the build method and returns material app
       title: 'To Do App', // title  of the app
       // Application theme data, you can set the colors for the application as

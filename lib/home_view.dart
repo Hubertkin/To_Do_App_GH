@@ -125,7 +125,7 @@ class _HomeViewState extends State<HomeView> {
                     if (_CompletedData.isEmpty) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: const [
                           Icon(
                             Icons.info,

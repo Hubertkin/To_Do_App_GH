@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
 
 import 'home_view.dart';
 
@@ -6,7 +7,7 @@ void main() //entry point of ur code, where the app starts from
 {
   runApp(
     DevicePreview(
-      const MyApp(),
+      builder: (context) => const MyApp(),
     ),
   );
 } //a unique function that creates the root of the flutter tree and it is taking a widget called my App

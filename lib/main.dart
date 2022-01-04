@@ -5,7 +5,12 @@ import 'home_view.dart';
 
 void main() //entry point of ur code, where the app starts from
 {
-  runApp(DevicePreview(enabled: kDebugMode, builder: (context) => const MyApp()));
+  runApp(
+    DevicePreview(
+      enabled: !kDebugMode,
+      builder: (context) => MyApp(),
+    ),
+  );
 } //a unique function that creates the root of the flutter tree and it is taking a widget called my App
 
 class MyApp extends StatelessWidget {

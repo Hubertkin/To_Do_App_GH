@@ -33,6 +33,8 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void loadData() async {
+    _unCompletedData.clear();
+    _CompletedData.clear();
     await _todoController.getAllTodos().then((List todos) {
       for (Todo element in todos) {
         if (!element.isCompleted) {

@@ -57,6 +57,10 @@ class _HomeViewState extends State<HomeView> {
           size: 40,
         )),
         actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.refresh),
+          ),
           PopupMenuButton<String>(
               icon: const Icon(Icons.menu),
               onSelected: (value) {

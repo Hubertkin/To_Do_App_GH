@@ -194,10 +194,29 @@ class CreateTodoView extends StatelessWidget {
                   print(myDate);
                   bool isSent = await _todoController.createTodo(title: _titleController.text, description: _descriptionController.text, deadline: myDate!);
                   if (isSent) {
-                  } else {}
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Color.fromRGBO(37, 43, 103, 1),
+                        content: Text('Todo added successfully!'),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text('Failed to add a new todo'),
+                      ),
+                    );
+                  }
                 } else {
                   //validation failed!
                   print('failed!');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text('All fields are required!'),
+                    ),
+                  );
                 }
               },
               child: const Text(

@@ -27,5 +27,8 @@ class TodoController {
     required String title,
     required String description,
     required DateTime deadline,
-  })
+  })async{
+    bool isSubmitted = false;
+    await _todoService.createTodo(title:title,description:description,deadline:deadline,)
+  }
 }

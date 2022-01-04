@@ -211,6 +211,7 @@ class _CreateTodoViewState extends State<CreateTodoView> {
                             content: Text('Todo added successfully!'),
                           ),
                         );
+                        Navigator.pop(context);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

@@ -88,7 +88,7 @@ class _HomeViewState extends State<HomeView> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return CreateTodoView();
+                return const CreateTodoView();
               },
             ),
           );

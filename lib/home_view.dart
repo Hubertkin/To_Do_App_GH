@@ -130,6 +130,7 @@ class _HomeViewState extends State<HomeView> {
                           Icon(
                             Icons.info,
                             size: 50,
+                            color: Color.fromRGBO(37, 43, 103, 1),
                           ),
                           Text('You don\'t have any completed Task!'),
                         ],

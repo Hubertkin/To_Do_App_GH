@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 
@@ -7,7 +8,7 @@ void main() //entry point of ur code, where the app starts from
 {
   runApp(
     DevicePreview(
-      enabled: kDebugMode,
+      enabled: !kDebugMode,
       builder: (context) => MyApp(),
     ),
   );

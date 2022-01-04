@@ -133,23 +133,24 @@ class _HomeViewState extends State<HomeView> {
                           Text('You don\'t have any completed Task!'),
                         ],
                       );
+                    } else {
+                      return ListView.separated(
+                        padding: const EdgeInsets.all(16),
+                        itemBuilder: (context, index) {
+                          return TaskCardWidget(
+                            dateTime: _CompletedData[index].deadline,
+                            description: _CompletedData[index].description,
+                            title: _CompletedData[index].title,
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(
+                            height: 5,
+                          );
+                        },
+                        itemCount: _CompletedData.length,
+                      );
                     }
-                    return ListView.separated(
-                      padding: const EdgeInsets.all(16),
-                      itemBuilder: (context, index) {
-                        return TaskCardWidget(
-                          dateTime: _CompletedData[index].deadline,
-                          description: _CompletedData[index].description,
-                          title: _CompletedData[index].title,
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(
-                          height: 5,
-                        );
-                      },
-                      itemCount: _CompletedData.length,
-                    );
                   });
             },
             child: Material(

@@ -7,7 +7,7 @@ void main() //entry point of ur code, where the app starts from
 {
   runApp(
     DevicePreview(
-      builder: (context) => const MyApp(),
+      builder: (context) => MyApp(),
     ),
   );
 } //a unique function that creates the root of the flutter tree and it is taking a widget called my App

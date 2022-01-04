@@ -27,7 +27,12 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    _todoController.getAllTodos().then((List todos) {
+    loadData();
+    });
+    super.initState();
+  }
+  loadData() async {
+  await _todoController.getAllTodos().then((List todos) {
       for (Todo element in todos) {
         if (!element.isCompleted) {
           _unCompletedData.add(element);
@@ -36,10 +41,7 @@ class _HomeViewState extends State<HomeView> {
         }
       }
       setState(() {});
-    });
-    super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +60,10 @@ class _HomeViewState extends State<HomeView> {
         )),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.refresh),
+            onPressed: () {
+
+            },
+            const icon: Icon(Icons.refresh),
           ),
           PopupMenuButton<String>(
               icon: const Icon(Icons.menu),

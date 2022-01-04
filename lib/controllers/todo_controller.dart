@@ -23,4 +23,9 @@ class TodoController {
 
     return todo;
   }
+  Future<bool>createTodo({
+    required String title,
+    required String description,
+    required DateTime deadline,
+  })
 }

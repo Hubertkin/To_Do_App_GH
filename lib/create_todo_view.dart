@@ -148,6 +148,7 @@ class CreateTodoView extends StatelessWidget {
                           minutes: selectedTime.minute,
                         ),
                       );
+                      print(selectedTime);
                     });
                   },
                   decoration: const InputDecoration(
@@ -183,7 +184,7 @@ class CreateTodoView extends StatelessWidget {
                 backgroundColor: Color.fromRGBO(37, 43, 103, 1),
                 padding: const EdgeInsets.all(15),
               ),
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   //send data to backend
                   print('success');
@@ -191,8 +192,9 @@ class CreateTodoView extends StatelessWidget {
                   print(_descriptionController.text);
                   print(_dateController.text + ' ' + _timeController.text);
                   print(myDate);
-                  //bool isSent = await _todoController.createTodo(title:_titleController.text ,description: _descriptionController.text, deadline: )
-
+                  bool isSent = await _todoController.createTodo(title: _titleController.text, description: _descriptionController.text, deadline: myDate!);
+                  if (isSent) {
+                  } else {}
                 } else {
                   //validation failed!
                   print('failed!');

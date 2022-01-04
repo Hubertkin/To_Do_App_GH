@@ -7,7 +7,7 @@ void main() //entry point of ur code, where the app starts from
 {
   runApp(
     DevicePreview(
-      isEnabled: !kReleaseMode,
+      enabled: !kReleaseMode,
       builder: (context) => MyApp(),
     ),
   );

@@ -3,8 +3,14 @@ import 'package:intl/intl.dart';
 
 import 'controllers/todo_controller.dart';
 
-class CreateTodoView extends StatelessWidget {
-  CreateTodoView({Key? key}) : super(key: key);
+class CreateTodoView extends StatefulWidget {
+  const CreateTodoView({Key? key}) : super(key: key);
+
+  @override
+  _CreateTodoViewState createState() => _CreateTodoViewState();
+}
+
+class _CreateTodoViewState extends State<CreateTodoView> {
   final TodoController _todoController = TodoController();
 
   final TextEditingController _titleController = TextEditingController();
@@ -14,10 +20,12 @@ class CreateTodoView extends StatelessWidget {
   final TextEditingController _dateController = TextEditingController();
 
   final TextEditingController _timeController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey();
+  DateTime? myDate;
+  bool isLoading = false;
 
   @override
-  DateTime? myDate;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -179,53 +187,58 @@ class CreateTodoView extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 35),
-          TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Color.fromRGBO(37, 43, 103, 1),
-                padding: const EdgeInsets.all(15),
-              ),
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  //send data to backend
-                  print('success');
-                  print(_titleController.text);
-                  print(_descriptionController.text);
-                  print(_dateController.text + ' ' + _timeController.text);
-                  print(myDate);
-                  bool isSent = await _todoController.createTodo(title: _titleController.text, description: _descriptionController.text, deadline: myDate!);
-                  if (isSent) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        backgroundColor: Colors.green,
-                        content: Text('Todo added successfully!'),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        backgroundColor: Colors.red,
-                        content: Text('Could not  add todo'),
-                      ),
-                    );
-                  }
-                } else {
-                  //validation failed!
-                  print('failed!');
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Colors.red,
-                      content: Text('All fields are required!'),
+          isLoading
+              ? CircularProgressIndicator.adaptive(
+                  backgroundColor: Colors.white,
+                )
+              : TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color.fromRGBO(37, 43, 103, 1),
+                    padding: const EdgeInsets.all(15),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      //send data to backend
+                      setState(() {
+                        isLoading = true;
+                      });
+                      bool isSent = await _todoController.createTodo(title: _titleController.text, description: _descriptionController.text, deadline: myDate!);
+                      setState(() {
+                        isLoading = false;
+                      });
+                      if (isSent) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.green,
+                            content: Text('Todo added successfully!'),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Could not  add todo'),
+                          ),
+                        );
+                      }
+                    } else {
+                      //validation failed!
+                      print('failed!');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text('All fields are required!'),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Create',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
                     ),
-                  );
-                }
-              },
-              child: const Text(
-                'Create',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                ),
-              )),
+                  )),
         ]),
       ),
     );

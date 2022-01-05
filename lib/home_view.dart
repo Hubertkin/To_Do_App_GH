@@ -279,20 +279,20 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     );
 
                     if (isUpdated) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: const Text('Todo marked as completed!'),
+                        ),
+                      );
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: Colors.green,
-                          content: Text('Todo marked as completed!'),
-                        ),
-                      );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                           backgroundColor: Colors.red,
-                          content: Text('Could not  mark todo as completed!'),
+                          content: const Text('Could not  mark todo as completed!'),
                         ),
                       );
                     }
@@ -335,20 +335,20 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
                     if (isDeleted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: const Text('Todo deleted successfully!'),
+                        ),
+                      );
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: Colors.green,
-                          content: Text('Todo deleted successfully!'),
-                        ),
-                      );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                           backgroundColor: Colors.red,
-                          content: Text('Could not delete todo!'),
+                          content: const Text('Could not delete todo!'),
                         ),
                       );
                     }

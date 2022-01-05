@@ -290,7 +290,6 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
 
                 widget._unCompletedData.removeAt(index);
                 widget._CompletedData.removeAt(index);
-
                 setState(() {});
                 if (isDeleted) {
                   ScaffoldMessenger.of(context).showSnackBar(

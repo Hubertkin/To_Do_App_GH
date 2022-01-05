@@ -44,7 +44,12 @@ class _HomeViewState extends State<HomeView> {
         }
       }
       setState(() {});
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Todos loaded!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('Todos loaded!'),
+        ),
+      );
     });
   }
 

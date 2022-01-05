@@ -237,7 +237,9 @@ class TodoListViewWidget extends StatelessWidget {
             key: const ValueKey(0),
             startActionPane: ActionPane(
               motion: const StretchMotion(),
-              dismissible: DismissiblePane(onDismissed: () {}),
+              dismissible: DismissiblePane(onDismissed: () {
+                print('Edit');
+              }),
               children: [
                 SlidableAction(
                   onPressed: doNothing,
@@ -250,7 +252,9 @@ class TodoListViewWidget extends StatelessWidget {
             ),
             endActionPane: ActionPane(
               motion: const StretchMotion(),
-              dismissible: DismissiblePane(onDismissed: () {}),
+              dismissible: DismissiblePane(onDismissed: () {
+                print('Delete');
+              }),
               children: [
                 SlidableAction(
                   onPressed: doNothing,

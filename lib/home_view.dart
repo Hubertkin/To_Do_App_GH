@@ -328,6 +328,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     ),
                   );
                 }
+                widget.load!();
               }),
               children: [
                 SlidableAction(
@@ -351,6 +352,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                         ),
                       );
                     }
+                    widget.load!();
                   },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,

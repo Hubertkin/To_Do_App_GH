@@ -252,10 +252,8 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                   id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                 );
                 // this code in the next two lines fixes 'dismissed slidable widget still in the widget tree ' error
-
-                setState(() {
-                  widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                });
+                widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                setState(() {});
 
                 if (isUpdated) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -280,10 +278,8 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     bool isUpdated = await _todoController.updateIsCompleted(
                       id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                     );
-
-                    setState(() {
-                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                    });
+                    widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                    setState(() {});
 
                     if (isUpdated) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -315,9 +311,8 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                 print('Delete');
                 bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
-                setState(() {
-                  widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                });
+                widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                setState(() {});
                 if (isDeleted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -339,9 +334,8 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                   onPressed: (context) async {
                     bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
-                    setState(() {
-                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                    });
+                    widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                    setState(() {});
                     if (isDeleted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

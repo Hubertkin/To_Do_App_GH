@@ -274,7 +274,28 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
               }),
               children: [
                 SlidableAction(
-                  onPressed: doNothing,
+                  onPressed: (context) async {
+                    bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
+
+                    widget._unCompletedData.removeAt(index);
+                    widget._CompletedData.removeAt(index);
+                    setState(() {});
+                    if (isDeleted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: const Text('Todo deleted successfully!'),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: const Text('Could not delete todo!'),
+                        ),
+                      );
+                    }
+                  },
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                   icon: Icons.edit,

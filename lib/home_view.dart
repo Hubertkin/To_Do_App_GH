@@ -245,6 +245,7 @@ class TodoListViewWidget extends StatelessWidget {
                 bool isUpdated = await _todoController1.updateIsCompleted(
                   id: selectedItem == 'todo' ? _unCompletedData[index].id : _CompletedData[index].id,
                 );
+                _unCompletedData[index].delete();
 
                 if (isUpdated) {
                   ScaffoldMessenger.of(context).showSnackBar(

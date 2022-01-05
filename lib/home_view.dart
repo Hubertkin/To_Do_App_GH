@@ -213,7 +213,7 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class TodoListViewWidget extends StatelessWidget {
-  const TodoListViewWidget({
+  TodoListViewWidget({
     Key? key,
     required this.selectedItem,
     required List<Todo> unCompletedData,
@@ -224,6 +224,7 @@ class TodoListViewWidget extends StatelessWidget {
   final String selectedItem;
   final List<Todo> _unCompletedData;
   final List<Todo> _CompletedData;
+  final TodoController _todoController1 = TodoController();
 
   void doNothing(BuildContext context) {}
 
@@ -237,8 +238,26 @@ class TodoListViewWidget extends StatelessWidget {
             key: const ValueKey(0),
             startActionPane: ActionPane(
               motion: const StretchMotion(),
-              dismissible: DismissiblePane(onDismissed: () {
+              dismissible: DismissiblePane(onDismissed: () async {
                 print('Edit');
+                bool isUpdated = await _todoController1.updateIsCompleted(
+                  id: selectedItem == 'todo' ? _unCompletedData[index].id : _CompletedData[index].id,
+                );
+                if (isUpdated) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.green,
+                      content: const Text('Todo marked as completed!'),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.red,
+                      content: const Text('Could not  mark todo as completed!'),
+                    ),
+                  );
+                }
               }),
               children: [
                 SlidableAction(

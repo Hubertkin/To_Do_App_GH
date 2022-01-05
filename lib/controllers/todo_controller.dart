@@ -55,7 +55,7 @@ class TodoController {
   }
 
   ///update Todo completion(isCompleted = true)
-  Future<bool> updateTodo({required String id}) async {
+  Future<bool> updateIsCompleted({required String id}) async {
     bool isUpdated = false;
     await _todoService.updateStatus(id).then((response) {
       int statusCode = response.statusCode;

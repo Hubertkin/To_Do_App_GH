@@ -206,17 +206,17 @@ class _CreateTodoViewState extends State<CreateTodoView> {
                       });
                       if (isSent) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             backgroundColor: Colors.green,
-                            content: Text('Todo added successfully!'),
+                            content: const Text('Todo added successfully!'),
                           ),
                         );
                         Navigator.pop(context);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             backgroundColor: Colors.red,
-                            content: Text('Could not  add todo'),
+                            content: const Text('Could not  add todo'),
                           ),
                         );
                       }

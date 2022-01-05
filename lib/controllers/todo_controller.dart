@@ -19,6 +19,8 @@ class TodoController {
         //error
         todo = [];
       }
+    }).catchError((onError) {
+      print(onError);
     });
 
     return todo;
@@ -49,6 +51,7 @@ class TodoController {
         isSubmitted = false;
       }
     }).catchError((onError) {
+      print(onError);
       isSubmitted = false;
     });
     return isSubmitted;

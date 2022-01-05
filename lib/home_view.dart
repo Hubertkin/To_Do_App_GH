@@ -232,7 +232,7 @@ class TodoListViewWidget extends StatefulWidget {
 }
 
 class _TodoListViewWidgetState extends State<TodoListViewWidget> {
-  final TodoController _todoController1 = TodoController();
+  final TodoController _todoController = TodoController();
 
   void doNothing(BuildContext context) {}
 
@@ -248,7 +248,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
               motion: const StretchMotion(),
               dismissible: DismissiblePane(onDismissed: () async {
                 print('Edit');
-                bool isUpdated = await _todoController1.updateIsCompleted(
+                bool isUpdated = await _todoController.updateIsCompleted(
                   id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                 );
                 widget._unCompletedData.removeAt(index);
@@ -283,8 +283,24 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
             ),
             endActionPane: ActionPane(
               motion: const StretchMotion(),
-              dismissible: DismissiblePane(onDismissed: () {
+              dismissible: DismissiblePane(onDismissed: () async {
                 print('Delete');
+                bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
+                if (isDeleted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.green,
+                      content: const Text('Todo deleted successfully!'),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.red,
+                      content: const Text('Could not delete todo!'),
+                    ),
+                  );
+                }
               }),
               children: [
                 SlidableAction(

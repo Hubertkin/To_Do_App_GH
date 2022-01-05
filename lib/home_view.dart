@@ -234,8 +234,10 @@ class TodoListViewWidget extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
           return Slidable(
+            key: const ValueKey(0),
             startActionPane: ActionPane(
               motion: const StretchMotion(),
+              dismissible: DismissiblePane(onDismissed: () {}),
               children: [
                 SlidableAction(
                   onPressed: doNothing,
@@ -248,6 +250,7 @@ class TodoListViewWidget extends StatelessWidget {
             ),
             endActionPane: ActionPane(
               motion: const StretchMotion(),
+              dismissible: DismissiblePane(onDismissed: () {}),
               children: [
                 SlidableAction(
                   onPressed: doNothing,

@@ -27,6 +27,7 @@ dependencies:
   intl: ^0.17.0
   layout: ^1.0.2
   http: ^0.13.4
+  flutter_slidable: ^1.2.0
   
   
 

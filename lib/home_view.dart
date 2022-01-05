@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'controllers/todo_controller.dart';
 import 'models/todo.dart';
@@ -230,10 +231,26 @@ class TodoListViewWidget extends StatelessWidget {
         scrollDirection: Axis.vertical,
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
-          return TaskCardWidget(
-            dateTime: selectedItem == 'todo' ? _unCompletedData[index].deadline : _CompletedData[index].deadline,
-            title: selectedItem == 'todo' ? _unCompletedData[index].title : _CompletedData[index].title,
-            description: selectedItem == 'todo' ? _unCompletedData[index].description : _CompletedData[index].description,
+          return Slidable(
+            startActionPane: ActionPane(
+              motion: const ScrollMotion(),
+              children: const [
+                SlidableAction(
+                  onPressed: () {
+                    print('I was tapped');
+                  },
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                  icon: Icons.edit,
+                  label: 'Edit',
+                ),
+              ],
+            ),
+            child: TaskCardWidget(
+              dateTime: selectedItem == 'todo' ? _unCompletedData[index].deadline : _CompletedData[index].deadline,
+              title: selectedItem == 'todo' ? _unCompletedData[index].title : _CompletedData[index].title,
+              description: selectedItem == 'todo' ? _unCompletedData[index].description : _CompletedData[index].description,
+            ),
           );
         },
         separatorBuilder: (context, index) {

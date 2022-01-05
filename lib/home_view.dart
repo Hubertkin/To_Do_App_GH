@@ -279,6 +279,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     );
                     widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                     setState(() {});
+                    widget.load!();
                     if (isUpdated) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -294,8 +295,6 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                         ),
                       );
                     }
-
-                    widget.load!();
                   },
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
@@ -336,6 +335,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
 
                     widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                     setState(() {});
+                    widget.load!();
                     if (isDeleted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -351,7 +351,6 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                         ),
                       );
                     }
-                    widget.load!();
                   },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,

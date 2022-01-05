@@ -246,7 +246,7 @@ class TodoListViewWidget extends StatelessWidget {
                 ),
               ],
             ),
-            endActionPane:ActionPane(
+            endActionPane: ActionPane(
               motion: const StretchMotion(),
               children: [
                 SlidableAction(
@@ -257,7 +257,7 @@ class TodoListViewWidget extends StatelessWidget {
                   label: 'Delete',
                 ),
               ],
-            ),,
+            ),
             child: TaskCardWidget(
               dateTime: selectedItem == 'todo' ? _unCompletedData[index].deadline : _CompletedData[index].deadline,
               title: selectedItem == 'todo' ? _unCompletedData[index].title : _CompletedData[index].title,

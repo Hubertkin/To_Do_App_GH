@@ -24,6 +24,7 @@ class TodoController {
     return todo;
   }
 
+  /// add a new todo
   Future<bool> createTodo({
     required String title,
     required String description,
@@ -51,5 +52,24 @@ class TodoController {
       isSubmitted = false;
     });
     return isSubmitted;
+  }
+
+  ///update Todo completion(isCompleted = true)
+  Future<bool> updateTodo({required String id}) async {
+    bool isUpdated = false;
+    await _todoService.updateStatus(id).then((response) {
+      int statusCode = response.statusCode;
+      if (statusCode == 200) {
+        //success
+        isUpdated = true;
+      } else {
+        //error
+        isUpdated = false;
+      }
+    }).catchError((onError) {
+      //error
+      isUpdated = false;
+    });
+    return isUpdated;
   }
 }

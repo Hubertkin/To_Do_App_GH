@@ -225,6 +225,8 @@ class TodoListViewWidget extends StatelessWidget {
   final List<Todo> _unCompletedData;
   final List<Todo> _CompletedData;
 
+  void doNothing(BuildContext context) {}
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -234,9 +236,9 @@ class TodoListViewWidget extends StatelessWidget {
           return Slidable(
             startActionPane: ActionPane(
               motion: const ScrollMotion(),
-              children: const [
+              children: [
                 SlidableAction(
-                  onPressed: (BuildContext context) {},
+                  onPressed: doNothing,
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                   icon: Icons.edit,

@@ -234,8 +234,6 @@ class TodoListViewWidget extends StatefulWidget {
 class _TodoListViewWidgetState extends State<TodoListViewWidget> {
   final TodoController _todoController = TodoController();
 
-  void doNothing(BuildContext context) {}
-
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -253,6 +251,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                 );
                 // this code in the next two lines fixes 'dismissed slidable widget still in the widget tree ' error
                 widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+
                 setState(() {});
 
                 if (isUpdated) {

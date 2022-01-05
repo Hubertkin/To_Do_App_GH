@@ -127,7 +127,7 @@ class _HomeViewState extends State<HomeView> {
             ],
           );
         }
-        return TodoListViewWidget(selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData);
+        return TodoListViewWidget(load: loadData, selectedItem: selectedItem, unCompletedData: _unCompletedData, completedData: _CompletedData);
       }),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -218,12 +218,14 @@ class TodoListViewWidget extends StatelessWidget {
     required this.selectedItem,
     required List<Todo> unCompletedData,
     required List<Todo> completedData,
-  })   : _unCompletedData = unCompletedData,
+    this.load,
+  })  : _unCompletedData = unCompletedData,
         _CompletedData = completedData,
         super(key: key);
   final String selectedItem;
   final List<Todo> _unCompletedData;
   final List<Todo> _CompletedData;
+  final Function? load;
   final TodoController _todoController1 = TodoController();
 
   void doNothing(BuildContext context) {}
@@ -243,6 +245,7 @@ class TodoListViewWidget extends StatelessWidget {
                 bool isUpdated = await _todoController1.updateIsCompleted(
                   id: selectedItem == 'todo' ? _unCompletedData[index].id : _CompletedData[index].id,
                 );
+
                 if (isUpdated) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -258,6 +261,7 @@ class TodoListViewWidget extends StatelessWidget {
                     ),
                   );
                 }
+                load!();
               }),
               children: [
                 SlidableAction(

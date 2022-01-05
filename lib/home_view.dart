@@ -279,7 +279,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                     );
                     widget._unCompletedData.removeAt(index);
-                    widget._CompletedData.removeAt(index);
+
                     setState(() {});
 
                     if (isUpdated) {
@@ -313,7 +313,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                 bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
                 widget._unCompletedData.removeAt(index);
-                widget._CompletedData.removeAt(index);
+
                 setState(() {});
                 if (isDeleted) {
                   ScaffoldMessenger.of(context).showSnackBar(

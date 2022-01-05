@@ -275,26 +275,29 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
               children: [
                 SlidableAction(
                   onPressed: (context) async {
-                    bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
-
+                    bool isUpdated = await _todoController.updateIsCompleted(
+                      id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
+                    );
                     widget._unCompletedData.removeAt(index);
                     widget._CompletedData.removeAt(index);
                     setState(() {});
-                    if (isDeleted) {
+
+                    if (isUpdated) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.green,
-                          content: const Text('Todo deleted successfully!'),
+                          content: const Text('Todo marked as completed!'),
                         ),
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.red,
-                          content: const Text('Could not delete todo!'),
+                          content: const Text('Could not  mark todo as completed!'),
                         ),
                       );
                     }
+                    widget.load!();
                   },
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
@@ -330,7 +333,28 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
               }),
               children: [
                 SlidableAction(
-                  onPressed: doNothing,
+                  onPressed: (context) async {
+                    bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
+
+                    widget._unCompletedData.removeAt(index);
+                    widget._CompletedData.removeAt(index);
+                    setState(() {});
+                    if (isDeleted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: const Text('Todo deleted successfully!'),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: const Text('Could not delete todo!'),
+                        ),
+                      );
+                    }
+                  },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                   icon: Icons.delete,

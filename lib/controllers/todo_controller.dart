@@ -68,8 +68,29 @@ class TodoController {
       }
     }).catchError((onError) {
       //error
+      print(onError);
       isUpdated = false;
     });
     return isUpdated;
+  }
+
+  // delete a todo
+  Future<bool> deleteTodo(String id) async {
+    bool isDeleted = false;
+    await _todoService.deleteTodo(id).then((response) {
+      int statusCode = response.statusCode;
+      if (statusCode == 200) {
+        //success
+        isDeleted = true;
+      } else {
+        //error
+        isDeleted = false;
+      }
+    }).catchError((onError) {
+      //error
+      print(onError);
+      isDeleted = false;
+    });
+    return isDeleted;
   }
 }

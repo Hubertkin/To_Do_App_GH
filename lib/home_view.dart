@@ -236,7 +236,7 @@ class TodoListViewWidget extends StatelessWidget {
               motion: const ScrollMotion(),
               children: const [
                 SlidableAction(
-                  onPressed: () {
+                  onPressed: (BuildContext context) {
                     print('I was tapped');
                   },
                   backgroundColor: Colors.green,

@@ -282,7 +282,20 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                    } else {}
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Todo marked as completed!'),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text('Could not  mark todo as completed!'),
+                        ),
+                      );
+                    }
                   },
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
@@ -325,7 +338,20 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                    } else {}
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Todo deleted successfully!'),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text('Could not delete todo!'),
+                        ),
+                      );
+                    }
                   },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,

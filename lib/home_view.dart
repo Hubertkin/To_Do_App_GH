@@ -212,7 +212,7 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class TodoListViewWidget extends StatelessWidget {
+class TodoListViewWidget extends StatefulWidget {
   TodoListViewWidget({
     Key? key,
     required this.selectedItem,
@@ -226,6 +226,12 @@ class TodoListViewWidget extends StatelessWidget {
   final List<Todo> _unCompletedData;
   final List<Todo> _CompletedData;
   final Function? load;
+
+  @override
+  _TodoListViewWidgetState createState() => _TodoListViewWidgetState();
+}
+
+class _TodoListViewWidgetState extends State<TodoListViewWidget> {
   final TodoController _todoController1 = TodoController();
 
   void doNothing(BuildContext context) {}
@@ -243,9 +249,10 @@ class TodoListViewWidget extends StatelessWidget {
               dismissible: DismissiblePane(onDismissed: () async {
                 print('Edit');
                 bool isUpdated = await _todoController1.updateIsCompleted(
-                  id: selectedItem == 'todo' ? _unCompletedData[index].id : _CompletedData[index].id,
+                  id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                 );
-                _unCompletedData.removeAt(index);
+                widget._unCompletedData.removeAt(index);
+                setState(() {});
 
                 if (isUpdated) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -262,7 +269,7 @@ class TodoListViewWidget extends StatelessWidget {
                     ),
                   );
                 }
-                load!();
+                widget.load!();
               }),
               children: [
                 SlidableAction(
@@ -290,9 +297,9 @@ class TodoListViewWidget extends StatelessWidget {
               ],
             ),
             child: TaskCardWidget(
-              dateTime: selectedItem == 'todo' ? _unCompletedData[index].deadline : _CompletedData[index].deadline,
-              title: selectedItem == 'todo' ? _unCompletedData[index].title : _CompletedData[index].title,
-              description: selectedItem == 'todo' ? _unCompletedData[index].description : _CompletedData[index].description,
+              dateTime: widget.selectedItem == 'todo' ? widget._unCompletedData[index].deadline : widget._CompletedData[index].deadline,
+              title: widget.selectedItem == 'todo' ? widget._unCompletedData[index].title : widget._CompletedData[index].title,
+              description: widget.selectedItem == 'todo' ? widget._unCompletedData[index].description : widget._CompletedData[index].description,
             ),
           );
         },
@@ -301,7 +308,7 @@ class TodoListViewWidget extends StatelessWidget {
             height: 5,
           );
         },
-        itemCount: selectedItem == 'todo' ? _unCompletedData.length : _CompletedData.length);
+        itemCount: widget.selectedItem == 'todo' ? widget._unCompletedData.length : widget._CompletedData.length);
   }
 }
 

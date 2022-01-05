@@ -273,7 +273,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
               }),
               children: [
                 SlidableAction(
-                  onPressed: (context) async {
+                  onPressed: (BuildContext context) async {
                     bool isUpdated = await _todoController.updateIsCompleted(
                       id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                     );
@@ -331,7 +331,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
               }),
               children: [
                 SlidableAction(
-                  onPressed: (context) async {
+                  onPressed: (BuildContext context) async {
                     bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
                     if (isDeleted) {

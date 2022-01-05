@@ -249,12 +249,13 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                 bool isUpdated = await _todoController.updateIsCompleted(
                   id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                 );
-                // this code in the next two lines fixes 'dismissed slidable widget still in the widget tree ' error
-                widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-
-                setState(() {});
 
                 if (isUpdated) {
+                  // this code in the next two lines fixes 'dismissed slidable widget still in the widget tree ' error
+                  widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+
+                  setState(() {});
+                  widget.load!();
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       backgroundColor: Colors.green,
@@ -269,7 +270,6 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     ),
                   );
                 }
-                widget.load!();
               }),
               children: [
                 SlidableAction(
@@ -277,10 +277,11 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     bool isUpdated = await _todoController.updateIsCompleted(
                       id: widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id,
                     );
-                    widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                    setState(() {});
-                    widget.load!();
+
                     if (isUpdated) {
+                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                      setState(() {});
+                      widget.load!();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.green,
@@ -309,9 +310,10 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                 print('Delete');
                 bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
-                widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                setState(() {});
                 if (isDeleted) {
+                  widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                  setState(() {});
+                  widget.load!();
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       backgroundColor: Colors.green,
@@ -326,17 +328,16 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     ),
                   );
                 }
-                widget.load!();
               }),
               children: [
                 SlidableAction(
                   onPressed: (context) async {
                     bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
-                    widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                    setState(() {});
-                    widget.load!();
                     if (isDeleted) {
+                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                      setState(() {});
+                      widget.load!();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.green,

@@ -235,7 +235,7 @@ class TodoListViewWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           return Slidable(
             startActionPane: ActionPane(
-              motion: const DrawerMotion(),
+              motion: const StretchMotion(),
               children: [
                 SlidableAction(
                   onPressed: doNothing,

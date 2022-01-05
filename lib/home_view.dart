@@ -279,15 +279,15 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     );
 
                     if (isUpdated) {
+                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                      setState(() {});
+                      widget.load!();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.green,
                           content: const Text('Todo marked as completed!'),
                         ),
                       );
-                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                      setState(() {});
-                      widget.load!();
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -335,15 +335,15 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     bool isDeleted = await _todoController.deleteTodo(widget.selectedItem == 'todo' ? widget._unCompletedData[index].id : widget._CompletedData[index].id);
 
                     if (isDeleted) {
+                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
+                      setState(() {});
+                      widget.load!();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.green,
                           content: const Text('Todo deleted successfully!'),
                         ),
                       );
-                      widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
-                      setState(() {});
-                      widget.load!();
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

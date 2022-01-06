@@ -370,71 +370,86 @@ class TaskCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Row(
-          children: [
-            Icon(
-              Icons.check_circle_outlined,
-              size: 30,
-              color: customColor(date: deadline(date: dateTime)),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: const Color.fromRGBO(37, 43, 103, 1),
-                    ),
-                  ),
-                  Text(
-                    description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              width: 15,
-            ),
-            Row(
+    return InkWell(
+      onTap:(){ showBarModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Column(
               children: [
-                Icon(
-                  Icons.notifications_outlined,
-                  color: customColor(
-                    date: deadline(date: dateTime),
-                  ),
-                ),
                 Text(
-                  deadline(date: dateTime),
-                  style: TextStyle(
+                  title,
+                  style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
+                )
+              ],
+            );
+          }),
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            children: [
+              Icon(
+                Icons.check_circle_outlined,
+                size: 30,
+                color: customColor(date: deadline(date: dateTime)),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: const Color.fromRGBO(37, 43, 103, 1),
+                      ),
+                    ),
+                    Text(
+                      description,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.notifications_outlined,
                     color: customColor(
                       date: deadline(date: dateTime),
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
+                  Text(
+                    deadline(date: dateTime),
+                    style: TextStyle(
+                      color: customColor(
+                        date: deadline(date: dateTime),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

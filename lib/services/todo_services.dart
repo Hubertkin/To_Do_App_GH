@@ -32,7 +32,7 @@ class TodoService {
   ///update iscompleted(patch)
   Future<Response> updateStatus(String id) async {
     Map<String, dynamic> body = {
-      'isCompleted': true.toString(),
+      'isCompleted': true,
     };
     return await patch(Uri.parse('$baseUrl/todos/$id'), body: json.encode(body));
   }

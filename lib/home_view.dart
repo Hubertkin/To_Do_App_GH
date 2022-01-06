@@ -282,19 +282,9 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.green,
-                          content: const Text('Todo marked as completed!'),
-                        ),
-                      );
+                      Fluttertoast.showToast(msg: "Todo marked as completed!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.red,
-                          content: const Text('Could not  mark todo as completed!'),
-                        ),
-                      );
+                      Fluttertoast.showToast(msg: "Could not  mark todo as completed!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     }
                   },
                   backgroundColor: Colors.green,
@@ -338,19 +328,9 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.green,
-                          content: const Text('Todo deleted successfully!'),
-                        ),
-                      );
+                      Fluttertoast.showToast(msg: "Todo deleted successfully!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.red,
-                          content: const Text('Could not delete todo!'),
-                        ),
-                      );
+                      Fluttertoast.showToast(msg: "Could not delete todo!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     }
                   },
                   backgroundColor: Colors.red,

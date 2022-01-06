@@ -188,7 +188,9 @@ class _CreateTodoViewState extends State<CreateTodoView> {
           ),
           const SizedBox(height: 35),
           isLoading
-              ? CircularProgressIndicator()
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
               : TextButton(
                   style: TextButton.styleFrom(
                     backgroundColor: Color.fromRGBO(37, 43, 103, 1),

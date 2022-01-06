@@ -1,16 +1,28 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
 
 import 'home_view.dart';
 
 void main() //entry point of ur code, where the app starts from
-    =>
-    runApp(MyApp()); //a unique function that creates the root of the flutter tree and it is taking a widget called my App
+{
+  runApp(
+    DevicePreview(
+      enabled: false,
+      builder: (context) => MyApp(),
+    ),
+  );
+} //a unique function that creates the root of the flutter tree and it is taking a widget called my App
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       // Application name . this overrides the build method and returns material app
       title: 'To Do App', // title  of the app
       // Application theme data, you can set the colors for the application as

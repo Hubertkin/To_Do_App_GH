@@ -383,7 +383,7 @@ class TaskCardWidget extends StatelessWidget {
                 const SizedBox(
                   height:10,
                 ),
-                Text(),
+                Text(deadline(date:dateTime)),
                 const SizedBox(
                   height:10,
                 ),

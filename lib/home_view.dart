@@ -379,10 +379,18 @@ class TaskCardWidget extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height:10,
+                ),
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyText1,
                 )
+                ,
               ],
             );
-          }),
+          })
       },
       child: Card(
         shape: RoundedRectangleBorder(

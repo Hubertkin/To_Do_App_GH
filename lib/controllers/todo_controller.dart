@@ -96,4 +96,19 @@ class TodoController {
     });
     return isDeleted;
   }
+
+  //get a todo
+  Future<Todo?> getTodo(String id) async {
+    Todo? todo;
+    await _todoService.getTodo(id).then((response) {
+      int statusCode = response.statusCode;
+      Map<String, dynamic> body = jsonDecode(response.body);
+      if (statusCode == 200) {
+        todo = Todo.fromJson(body);
+      } else {
+        todo = null;
+      }
+    });
+    return todo;
+  }
 }

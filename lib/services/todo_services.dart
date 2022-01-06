@@ -19,7 +19,7 @@ class TodoService {
     Map<String, dynamic> body = {
       'title': title,
       'description': description,
-      'deadline': deadline.toString(),
+      'deadline': deadline,
     };
     return await post(Uri.parse('$baseUrl/todos'), body: json.encode(body));
   }

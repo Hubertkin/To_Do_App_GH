@@ -375,25 +375,28 @@ class TaskCardWidget extends StatelessWidget {
         showBarModalBottomSheet(
             context: context,
             builder: (context) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(deadline(date: dateTime)),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    description,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ],
+              return Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(deadline(date: dateTime)),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      description,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ],
+                ),
               );
             });
       },

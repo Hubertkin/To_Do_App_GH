@@ -283,9 +283,9 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                      Fluttertoast.showToast(msg: "Todo marked as completed!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
+                      Fluttertoast.showToast(msg: "Todo marked as completed!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     } else {
-                      Fluttertoast.showToast(msg: "Could not  mark todo as completed!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.red, textColor: Colors.white, fontSize: 16.0);
+                      Fluttertoast.showToast(msg: "Could not  mark todo as completed!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 2, backgroundColor: Colors.red, textColor: Colors.white, fontSize: 16.0);
                     }
                   },
                   backgroundColor: Colors.green,
@@ -329,9 +329,9 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
                       widget.load!();
-                      Fluttertoast.showToast(msg: "Todo deleted successfully!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
+                      Fluttertoast.showToast(msg: "Todo deleted successfully!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     } else {
-                      Fluttertoast.showToast(msg: "Could not delete todo!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
+                      Fluttertoast.showToast(msg: "Could not delete todo!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 2, backgroundColor: Colors.red, textColor: Colors.white, fontSize: 16.0);
                     }
                   },
                   backgroundColor: Colors.red,

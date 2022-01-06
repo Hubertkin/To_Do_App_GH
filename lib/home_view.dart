@@ -383,11 +383,14 @@ class TaskCardWidget extends StatelessWidget {
                 const SizedBox(
                   height:10,
                 ),
+                Text(),
+                const SizedBox(
+                  height:10,
+                ),
                 Text(
                   description,
                   style: Theme.of(context).textTheme.bodyText1,
-                )
-                ,
+                ),
               ],
             );
           })

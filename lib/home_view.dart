@@ -376,6 +376,7 @@ class TaskCardWidget extends StatelessWidget {
             context: context,
             builder: (context) {
               return Column(
+                crossAxisAlignment : CrossAxisAlignment.start;
                 children: [
                   Text(
                     title,

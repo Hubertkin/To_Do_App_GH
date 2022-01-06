@@ -21,12 +21,14 @@ class TodoService {
       description: description,
       deadline: deadline,
     );
+    String jsonUser = jsonEncode(usersTodo);
+    print(jsonUser);
     Map<String, dynamic> body = {
       'title': title,
       'description': description,
       'deadline': deadline.toString(),
     };
-    return await post(Uri.parse('$baseUrl/todos'), body: jsonEncode(usersTodo));
+    return await post(Uri.parse('$baseUrl/todos'), body: jsonUser);
   }
 
   ///get todo by id(one todo)

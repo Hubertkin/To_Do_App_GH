@@ -328,7 +328,7 @@ class _TodoListViewWidgetState extends State<TodoListViewWidget> {
                     if (isDeleted) {
                       widget.selectedItem == 'todo' ? widget._unCompletedData.removeAt(index) : widget._CompletedData.removeAt(index);
                       setState(() {});
-                      widget.load!();
+
                       Fluttertoast.showToast(msg: "Todo deleted successfully!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.green, textColor: Colors.white, fontSize: 16.0);
                     } else {
                       Fluttertoast.showToast(msg: "Could not delete todo!", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 2, backgroundColor: Colors.red, textColor: Colors.white, fontSize: 16.0);

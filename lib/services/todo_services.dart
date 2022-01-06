@@ -19,7 +19,7 @@ class TodoService {
       'description': description,
       'deadline': deadline.toString(),
     };
-    return await post(Uri.parse('$baseUrl/todos'), body: body.toJson());
+    return await post(Uri.parse('$baseUrl/todos'), body: body.);
   }
 
   ///get todo by id(one todo)

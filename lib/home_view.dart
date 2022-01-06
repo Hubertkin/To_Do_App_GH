@@ -378,7 +378,7 @@ class TaskCardWidget extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
                       title,
@@ -387,7 +387,11 @@ class TaskCardWidget extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(deadline(date: dateTime)),
+                    Text(
+                      deadline(date: dateTime),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(color: Colors.grey),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),

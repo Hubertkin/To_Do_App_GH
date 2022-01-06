@@ -393,7 +393,7 @@ class TaskCardWidget extends StatelessWidget {
                 ),
               ],
             );
-          })
+          };
       },
       child: Card(
         shape: RoundedRectangleBorder(

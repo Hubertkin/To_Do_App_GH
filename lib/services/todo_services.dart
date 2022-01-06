@@ -16,17 +16,12 @@ class TodoService {
     required String description,
     required DateTime deadline,
   }) async {
-    UsersTodo usersTodo = UsersTodo(
-      title: title,
-      description: description,
-      deadline: deadline,
-    );
     Map<String, dynamic> body = {
       'title': title,
       'description': description,
       'deadline': deadline.toString(),
     };
-    return await post(Uri.parse('$baseUrl/todos'), body: json.encode(usersTodo));
+    return await post(Uri.parse('$baseUrl/todos'), body: json.encode(body);
   }
 
   ///get todo by id(one todo)
@@ -37,27 +32,13 @@ class TodoService {
   ///update iscompleted(patch)
   Future<Response> updateStatus(String id) async {
     Map<String, dynamic> body = {
-      'isCompleted': true,
+      'isCompleted': true.toString(),
     };
-    return await patch(Uri.parse('$baseUrl/todos/$id'), body: json.encode(body));
+    return await patch(Uri.parse('$baseUrl/todos/$id'), body: body);
   }
 
   ///delete  a todo
   Future<Response> deleteTodo(String id) async {
     return await delete(Uri.parse('$baseUrl/todos/$id'));
   }
-}
-
-class UsersTodo {
-  String title;
-  String description;
-  DateTime deadline;
-
-  UsersTodo({required this.title, required this.description, required this.deadline});
-
-  Map toJson() => {
-        'title': title,
-        'description': description,
-        'deadline': deadline,
-      };
 }

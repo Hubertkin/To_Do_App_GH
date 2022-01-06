@@ -371,29 +371,30 @@ class TaskCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:(){ showBarModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Column(
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height:10,
-                ),
-                Text(deadline(date:dateTime)),
-                const SizedBox(
-                  height:10,
-                ),
-                Text(
-                  description,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ],
-            );
-          };
+      onTap: () {
+        showBarModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Column(
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(deadline(date: dateTime)),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    description,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ],
+              );
+            });
       },
       child: Card(
         shape: RoundedRectangleBorder(

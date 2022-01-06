@@ -1,5 +1,7 @@
 import 'package:http/http.dart';
 
+import 'dart:convert';
+
 class TodoService {
   final String baseUrl = 'https://tan-misty-elephant.cyclic.app';
 
@@ -19,7 +21,7 @@ class TodoService {
       'description': description,
       'deadline': deadline.toString(),
     };
-    return await post(Uri.parse('$baseUrl/todos'), body: body);
+    return await post(Uri.parse('$baseUrl/todos'), body: json.encode(body));
   }
 
   ///get todo by id(one todo)

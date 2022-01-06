@@ -34,7 +34,7 @@ class TodoService {
     Map<String, dynamic> body = {
       'isCompleted': true.toString(),
     };
-    return await patch(Uri.parse('$baseUrl/todos/$id'), body: body);
+    return await patch(Uri.parse('$baseUrl/todos/$id'), body: json.encode(body));
   }
 
   ///delete  a todo
